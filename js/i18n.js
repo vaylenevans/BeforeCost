@@ -37,7 +37,7 @@ BC.STRINGS = {
     'landing.eyebrow': 'Know before you owe.',
     'landing.title': 'How it works',
     'landing.body': "Free help for Houston residents. We'll help you find coverage, compare hospital prices, and understand what you'll actually pay — all before you step into a hospital.",
-    'landing.intro': 'BeforeCost walks Houston residents through three quick steps to put all your healthcare cost information in one place.',
+    'landing.intro': 'BeforeCost walks uninsured Houston residents through three quick steps to put all your healthcare cost information in one place.',
     'landing.b1': 'Compare prices for 11 procedures across 8 Houston hospitals',
     'landing.b2': 'Find programs that can reduce or cover your costs',
     'landing.b3': 'All before you ever get the bill',
