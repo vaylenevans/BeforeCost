@@ -1,0 +1,73 @@
+# BeforeCost — Netlify configuration.
+# Static site: HTML/CSS/JS only, no backend, no build step, no serverless functions.
+
+[build]
+  publish = "."
+  command = ""
+
+# ---------------------------------------------------------------------------
+# Security headers applied to every response.
+# ---------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Content-Security-Policy — the core lockdown. See notes below for exactly
+    # what each directive allows.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://plausible.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+
+    # Clickjacking: refuse to be embedded in any frame/iframe anywhere.
+    X-Frame-Options = "DENY"
+
+    # Stop the browser from MIME-sniffing responses into a different type.
+    X-Content-Type-Options = "nosniff"
+
+    # Don't leak full URLs (which could carry context) to other origins.
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Disable powerful browser APIs the site never uses.
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=(), interest-cohort=()"
+
+    # Force HTTPS for two years, including subdomains (belt-and-suspenders with
+    # Netlify's own Force-HTTPS redirect).
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+    # No Flash/PDF cross-domain policies.
+    X-Permitted-Cross-Domain-Policies = "none"
+
+# ---------------------------------------------------------------------------
+# Content-Security-Policy — what it allows, and nothing else:
+#   default-src 'self'          Everything not overridden below: same origin only.
+#   script-src  'self'          Our own JS files (including js/plausible-init.js)
+#               plausible.io    + the Plausible analytics script. NO inline
+#                               scripts, NO eval, NO other origins.
+#   style-src   'self'          Our stylesheet,
+#               'unsafe-inline' + the small inline style="" attributes the app
+#                               uses for layout (CSS injection is far lower risk
+#                               than script injection),
+#               fonts.googleapis.com  + the Google Fonts stylesheet.
+#   font-src    'self'          + Google Fonts font files (fonts.gstatic.com).
+#   img-src     'self' data:    Same-origin images + the data: URI used for the
+#                               dropdown-arrow SVG in CSS. (The site otherwise
+#                               uses inline SVG markup, which needs no img-src.)
+#   connect-src 'self'          + Plausible's event endpoint (plausible.io). This
+#               plausible.io    is the ONLY network destination any script may
+#                               reach — screener answers can go nowhere.
+#   object-src  'none'          No <object>/<embed>/plugins.
+#   base-uri    'self'          Block <base> tag injection.
+#   form-action 'self'          Forms can only submit to our own origin.
+#   frame-ancestors 'none'      Same as X-Frame-Options: DENY (modern form).
+#   upgrade-insecure-requests   Any stray http:// reference is upgraded to https.
+# ---------------------------------------------------------------------------
+
+# Force HTTPS
+# -----------
+# Netlify auto-provisions a TLS certificate and, with "Force HTTPS" enabled
+# (Site settings → Domain management → HTTPS → "Force HTTPS redirect"; on by
+# default for new sites), 301-redirects every http:// request to https://
+# for whatever domain the site is actually served on. That is the correct,
+# domain-agnostic way to enforce HTTPS on Netlify — combined here with the
+# Strict-Transport-Security header and the CSP's upgrade-insecure-requests
+# directive above, there is no way to load the site over plain HTTP.
+#
+# ACTION REQUIRED after deploy: confirm "Force HTTPS redirect" is ON in the
+# Netlify dashboard for this site.
