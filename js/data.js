@@ -220,16 +220,16 @@ BC.PRICES = {
     hernia:           { cash:11816, disc:11816, fee:'Hospital only (unverified)', note:'no_discount' }
   },
   methodist_tmc: {
-    vaginal_delivery: { cash:30680, disc:15187, fee:'Both (assumed bundled, unverified)' },
-    cesarean:         { cash:37462, disc:18544, fee:'Both (assumed bundled, unverified)' },
-    appendectomy:     { cash:57356, disc:28391, fee:'Both (assumed bundled, unverified)' },
-    breast_biopsy:    { cash:15435, disc:7640,  fee:'Both (assumed bundled, unverified)' },
-    hysterectomy:     { cash:84398, disc:41777, fee:'Both (assumed bundled, unverified)' },
+    vaginal_delivery: { cash:30680, disc:15187, fee:'Hospital only (assumed, unverified)' },
+    cesarean:         { cash:37462, disc:18544, fee:'Hospital only (assumed, unverified)' },
+    appendectomy:     { cash:57356, disc:28391, fee:'Hospital only (assumed, unverified)' },
+    breast_biopsy:    { cash:15435, disc:7640,  fee:'Hospital only (assumed, unverified)' },
+    hysterectomy:     { cash:84398, disc:41777, fee:'Hospital only (assumed, unverified)' },
     colonoscopy:      { cash:644,   disc:644,   fee:'Hospital only (assumed, unverified)', note:'no_discount' },
-    cholecystectomy:  { cash:54880, disc:27166, fee:'Both (assumed bundled, unverified)' },
-    ct_abdomen:       { cash:5804,  disc:2873,  fee:'Both (assumed bundled, unverified)' },
-    mri_lumbar:       { cash:2112,  disc:1045,  fee:'Both (assumed bundled, unverified)' },
-    tonsillectomy:    { cash:31629, disc:15657, fee:'Both (assumed bundled, unverified)' },
+    cholecystectomy:  { cash:54880, disc:27166, fee:'Hospital only (assumed, unverified)' },
+    ct_abdomen:       { cash:5804,  disc:2873,  fee:'Hospital only (assumed, unverified)' },
+    mri_lumbar:       { cash:2112,  disc:1045,  fee:'Hospital only (assumed, unverified)' },
+    tonsillectomy:    { cash:31629, disc:15657, fee:'Hospital only (assumed, unverified)' },
     hernia:           { cash:19554, disc:10978, fee:'Both verified (estimated)' }
   },
   methodist_west: {

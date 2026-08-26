@@ -671,14 +671,13 @@ select {
 .hidden { display: none !important; }
 .spacer-sm { height: 10px; }
 
-/* ---------- Homepage spacing, phones only (≤559px) ---------- */
-/* Scoped to .landing-page + this breakpoint so tablet/desktop and every other
-   page are unaffected. */
+/* ---------- Mobile spacing, phones only (≤559px) ---------- */
+/* This breakpoint never affects tablet/desktop (≥560px). */
 @media (max-width: 559px) {
-  /* Push the wordmark + slogan block down a little from the top... */
+  /* Homepage only: push the wordmark + slogan block down a little from the top... */
   .landing-page { padding-top: 52px; }
-  /* ...give the "How it works" card more space below the Houston, Texas map... */
+  /* ...and give the "How it works" card more space below the Houston, Texas map. */
   .landing-page .hero-grid { gap: 48px; }
-  /* ...and pull the footer buildings + FAQ up close to the content. */
-  .landing-page { padding-bottom: 8px; }
+  /* Every page: pull the footer buildings + FAQ up close to the content. */
+  .page { padding-bottom: 8px; }
 }
