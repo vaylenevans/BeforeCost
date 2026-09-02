@@ -1088,19 +1088,19 @@
     }).join('');
 
     var programs = [
-      { name: 'Medicaid, CHIP & CHIP Perinatal', desc: 'Free or low-cost coverage for eligible Texans. Apply through Your Texas Benefits.', site: 'yourtexasbenefits.com', url: 'https://www.yourtexasbenefits.com', phone: '2-1-1', kind: 'apply' },
-      { name: 'ACA Marketplace', desc: 'Subsidized private health plans through the federal Marketplace.', site: 'healthcare.gov', url: 'https://www.healthcare.gov', phone: '1-800-318-2596', kind: 'apply' },
-      { name: 'Healthy Texas Women', desc: "Free women's preventive and family-planning care.", site: 'healthytexaswomen.org', url: 'https://www.healthytexaswomen.org', phone: '1-866-993-9972', kind: 'apply' },
-      { name: 'Harris Health Gold Card', desc: 'Low-cost care for Harris County residents at or below 150% of the Federal Poverty Level.', site: 'ola.veritysource.com/harris', url: 'https://ola.veritysource.com/harris', phone: '713-566-6509', kind: 'gold' },
-      { name: 'SSI (Supplemental Security Income)', desc: 'For adults with disabilities; approval can lead to full Texas Medicaid.', site: 'ssa.gov/apply/ssi', url: 'https://www.ssa.gov/apply/ssi', phone: '1-800-772-1213', kind: 'plain' },
-      { name: 'Community Health Centers', desc: 'Sliding-scale clinics that serve everyone regardless of insurance or immigration status.', site: 'findahealthcenter.hrsa.gov', url: 'https://findahealthcenter.hrsa.gov', phone: '', kind: 'plain' },
-      { name: 'NeedyMeds', desc: 'Free or discounted prescription assistance programs.', site: 'needymeds.org', url: 'https://www.needymeds.org', phone: '', kind: 'plain' },
-      { name: 'Dollar For', desc: 'Helps you fight denied charity care applications for free.', site: 'dollarfor.org', url: 'https://www.dollarfor.org', phone: '', kind: 'plain' },
-      { name: '2-1-1 Texas', desc: 'Free, confidential help finding local assistance programs.', site: '211texas.org', url: 'https://www.211texas.org', phone: '2-1-1', kind: 'plain' },
-      { name: 'WIC', desc: 'Nutrition support for pregnant women, new moms, and young children.', site: 'texaswic.org', url: 'https://www.texaswic.org', phone: '', kind: 'plain' }
+      { name: 'Medicaid, CHIP & CHIP Perinatal', descKey: 'res.prog.medicaid', site: 'yourtexasbenefits.com', url: 'https://www.yourtexasbenefits.com', phone: '2-1-1', kind: 'apply' },
+      { name: 'ACA Marketplace', descKey: 'res.prog.aca', site: 'healthcare.gov', url: 'https://www.healthcare.gov', phone: '1-800-318-2596', kind: 'apply' },
+      { name: 'Healthy Texas Women', descKey: 'res.prog.htw', site: 'healthytexaswomen.org', url: 'https://www.healthytexaswomen.org', phone: '1-866-993-9972', kind: 'apply' },
+      { name: 'Harris Health Gold Card', descKey: 'res.prog.goldcard', site: 'ola.veritysource.com/harris', url: 'https://ola.veritysource.com/harris', phone: '713-566-6509', kind: 'gold' },
+      { name: 'SSI (Supplemental Security Income)', descKey: 'res.prog.ssi', site: 'ssa.gov/apply/ssi', url: 'https://www.ssa.gov/apply/ssi', phone: '1-800-772-1213', kind: 'plain' },
+      { name: 'Community Health Centers', descKey: 'res.prog.chc', site: 'findahealthcenter.hrsa.gov', url: 'https://findahealthcenter.hrsa.gov', phone: '', kind: 'plain' },
+      { name: 'NeedyMeds', descKey: 'res.prog.needymeds', site: 'needymeds.org', url: 'https://www.needymeds.org', phone: '', kind: 'plain' },
+      { name: 'Dollar For', descKey: 'res.prog.dollarfor', site: 'dollarfor.org', url: 'https://www.dollarfor.org', phone: '', kind: 'plain' },
+      { name: '2-1-1 Texas', descKey: 'res.prog.t211', site: '211texas.org', url: 'https://www.211texas.org', phone: '2-1-1', kind: 'plain' },
+      { name: 'WIC', descKey: 'res.prog.wic', site: 'texaswic.org', url: 'https://www.texaswic.org', phone: '', kind: 'plain' }
     ];
     function progCard(p) {
-      var body = '<div class="res-hosp-addr">' + esc(p.desc) + '</div>' +
+      var body = '<div class="res-hosp-addr">' + esc(t(p.descKey)) + '</div>' +
         (p.phone ? '<div class="res-hosp-line"><span class="res-lbl">' + esc(t('resources.callLabel')) + ':</span> ' +
           '<a href="' + tel(p.phone) + '">' + esc(p.phone) + '</a></div>' : '') +
         '<div class="res-hosp-links"><a href="' + esc(p.url) + '" target="_blank" rel="noopener noreferrer" data-out="' + p.kind + '" data-name="' + esc(p.name) + '">' + esc(p.site) + ' ↗</a></div>';
@@ -1176,7 +1176,7 @@
   function viewAbout() {
     var email = '<a href="mailto:beforecost@gmail.com">beforecost@gmail.com</a>';
     var paras = ['about.p1', 'about.p2', 'about.p3', 'about.p4', 'about.p5', 'about.p6', 'about.p7']
-      .map(function (k) { return '<p>' + esc(t(k)) + '</p>'; }).join('');
+      .map(function (k) { return t(k).split('\n\n').map(function (x) { return '<p>' + esc(x) + '</p>'; }).join(''); }).join('');
     return '<div class="page narrow">' +
       '<p class="eyebrow">' + esc(t('about.eyebrow')) + '</p>' +
       '<h1>' + esc(t('about.title')) + '</h1>' +

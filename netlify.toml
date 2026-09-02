@@ -6,6 +6,28 @@
   command = ""
 
 # ---------------------------------------------------------------------------
+# Block source-control / editor / OS metadata from ever being served, even if a
+# drag-and-drop deploy uploads them. (Deploying via a connected Git repo avoids
+# shipping .git at all — recommended.)
+# ---------------------------------------------------------------------------
+[[redirects]]
+  from = "/.git/*"
+  to = "/index.html"
+  status = 404
+[[redirects]]
+  from = "/.claude/*"
+  to = "/index.html"
+  status = 404
+[[redirects]]
+  from = "/.DS_Store"
+  to = "/index.html"
+  status = 404
+[[redirects]]
+  from = "/.gitignore"
+  to = "/index.html"
+  status = 404
+
+# ---------------------------------------------------------------------------
 # Security headers applied to every response.
 # ---------------------------------------------------------------------------
 [[headers]]
