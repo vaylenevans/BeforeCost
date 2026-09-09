@@ -313,7 +313,7 @@ BC.STRINGS.es = {
   'proc.breast_biopsy': 'Biopsia de mama a través de la piel',
   'proc.hysterectomy': 'Histerectomía laparoscópica',
   'proc.colonoscopy': 'Colonoscopia',
-  'proc.cholecystectomy': 'Colecistectomía',
+  'proc.cholecystectomy': 'Colecistectomía (extirpación de la vesícula biliar)',
   'proc.ct_abdomen': 'Tomografía computarizada de abdomen/pelvis sin contraste',
   'proc.mri_lumbar': 'Resonancia magnética lumbar sin contraste',
   'proc.tonsillectomy': 'Amigdalectomía (extirpación de amígdalas)',

@@ -329,7 +329,7 @@ BC.STRINGS = {
     'proc.breast_biopsy': 'Breast Biopsy Accessed Through the Skin',
     'proc.hysterectomy': 'Laparoscopic Hysterectomy',
     'proc.colonoscopy': 'Colonoscopy',
-    'proc.cholecystectomy': 'Cholecystectomy',
+    'proc.cholecystectomy': 'Cholecystectomy (gallbladder removal)',
     'proc.ct_abdomen': 'CT Scan Abdomen/Pelvis without contrast',
     'proc.mri_lumbar': 'MRI Lumbar Spine without contrast',
     'proc.tonsillectomy': 'Tonsillectomy (Tonsil Removal)',
