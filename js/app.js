@@ -100,16 +100,20 @@
     if (!a) return;
     var kind = a.getAttribute('data-out');      // apply | charity | gold | estimator | plain
     var name = a.getAttribute('data-name') || '';
+    // The "did you apply?" follow-up only arms for links that surface through the
+    // eligibility-screener flow (results, compare, gold card) — never from the
+    // Resources directory, which people browse without having screened.
+    var arm = currentPath() !== '/resources';
     if (kind === 'charity') {
       track('charity_care_link_clicked', { hospital: name });
-      setPending(name);
+      if (arm) setPending(name);
     } else if (kind === 'gold') {
       track('gold_card_apply_clicked');
-      setPending('Harris Health Gold Card');
+      if (arm) setPending('Harris Health Gold Card');
     } else if (kind === 'estimator') {
       track('insurance_estimator_clicked', { hospital: name });
     } else if (kind === 'apply') {
-      setPending(name);
+      if (arm) setPending(name);
     }
     // links carry target=_blank + rel; let the browser open them normally.
   });

@@ -293,9 +293,9 @@ BC.STRINGS = {
 
     /* About (rebuilt) */
     'about.p1': 'The idea for BeforeCost hit me while studying abroad in Paris.',
-    'about.p2': "I was sitting in a Global Health class, learning about the healthcare system in France, where almost everyone has free or low-cost care through their universal system. It got me thinking about home, about how many people in the U.S. pay absurd amounts for the same care, or skip it entirely because they can't.",
-    'about.p3': "Around that same time, I'd been telling myself I wanted to build a personal project. So I thought, why not build it around this?",
-    'about.p4': "I started researching and landed on the idea of a hospital cost transparency tool. Then I realized those already exist. Turquoise Health, SumHealth, and others show you what procedures cost at different hospitals. What they don't show you is the financial assistance available to you based on your income and family size, like charity care, which every non-profit hospital offers (58% of U.S. hospitals are non-profit).",
+    'about.p2': "I was sitting in a Global Health class, learning about the healthcare system in France, where almost everyone has free or low-cost care through their universal system. It got me thinking about home, about how many people in the U.S. pay absurd amounts for the same care, or skip it entirely because they can't afford it.",
+    'about.p3': "I'd been wanting to build a personal project around that same time. So I thought, why not this?",
+    'about.p4': "I landed on a hospital cost transparency tool, then realized those already exist. Turquoise Health, SumHealth, and others show you what procedures cost at different hospitals.\n\nWhat they don't show you is the financial assistance available to you based on your income and family size, like charity care, which every non-profit hospital offers (58% of U.S. hospitals are non-profit).",
     'about.p5': "That's the gap. People can see the price, but nobody shows them the help.",
     'about.p6': 'So I created BeforeCost, a financial navigation tool for uninsured people in Houston, Texas, a city with one of the highest uninsured rates in the country.\n\nIt does two things: it compares prices for 11 procedures across 8 Houston hospitals, and it shows you the financial assistance programs, like charity care, that can reduce or eliminate what you owe.',
     'about.p7': 'All before you ever get the bill.',
