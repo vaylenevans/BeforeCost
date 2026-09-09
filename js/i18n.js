@@ -141,6 +141,8 @@ BC.STRINGS = {
     'compare.charityDiscPctAlmost': 'Almost 100% off through charity care, based on your income. Apply before your procedure to confirm your exact cost.',
     'compare.dollarFor': 'If your application is denied, Dollar For can help you fight it for free — {link}',
     'compare.hcaCharity': "HCA's discount depends on your income, your procedure, and the location, so it's hard to predict exactly. Call HCA at 888-246-3812 to confirm what you'd qualify for before you schedule.",
+    'compare.hcaPolicyLink': "View HCA's financial assistance policy →",
+    'hca.noApp': 'HCA does not offer an online charity care application. Call 888-246-3812 to request one and speak with a financial counselor.',
 
     'other.title': "This procedure isn't on BeforeCost yet",
     'other.body': "BeforeCost currently shows verified pricing for 11 common procedures across 8 Houston hospitals. We're expanding our procedure list as we collect more data. If you need pricing for a different procedure right now, you can check each hospital's official good faith estimator directly. Visit the Resources page for direct links to all 8 hospitals' estimator tools, charity care applications, and financial counseling phone numbers.",
@@ -284,6 +286,7 @@ BC.STRINGS = {
     'resources.callLabel': 'Call',
     'resources.estimatorLink': 'Good faith estimator ↗',
     'resources.charityApplyLink': 'Charity care application ↗',
+    'resources.hcaPolicyLink': "View HCA's financial assistance policy ↗",
     'resources.goldApplyLink': 'Apply for the Gold Card ↗',
     'resources.charityThresh': 'Free care at or below {free}% FPL · Discounted up to {disc}% FPL',
     'resources.goldThresh': 'Gold Card for Harris County residents at or below 150% FPL · no insurance required',

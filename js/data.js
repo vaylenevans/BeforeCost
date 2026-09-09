@@ -59,7 +59,7 @@ BC.INSURANCE_ESTIMATOR_PROCS = ['appendectomy', 'hysterectomy', 'cholecystectomy
 
 /* Hospital systems -> official estimator URL (used for Rule 6 links). */
 BC.ESTIMATORS = {
-  mh:        'https://memorialhermann.org/patients-visitors/patient-services/financial-care/financial-resources/pricing-estimate',
+  mh:        'https://mychart.memorialhermann.org/MyChart/GuestEstimates/AcceptDisclaimer?svcArea=WP-24bQZ92EAZz-2F8E-2BGNhzQy-2BBQ-3D-3D-24mkjc18ASwH8zx8o6IFULPJ4pJCI9VIMv69F88LRCD9s-3D&isMultiSA=false',
   methodist: 'https://mychart.houstonmethodist.org/MyChart/GuestEstimates/AcceptDisclaimer?svcArea=WP-24rSoO2Uiqo7WIOgyxXcne0A-3D-3D-24ZNnWeZUqNqNxWrEA3SM-2BT5f-2B-2FdlsUqOiRtlJbvRBeqo-3D&isMultiSA=false',
   hca:       'https://www.hcahoustonhealthcare.com/patient-resources/patient-financial-resources/pricing-estimates-and-information',
   stlukes:   'https://www.stlukeshealth.org/cost-estimator'

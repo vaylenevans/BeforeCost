@@ -132,6 +132,8 @@ BC.STRINGS.es = {
   'compare.charityDiscPctAlmost': 'Casi el 100% de descuento por atención caritativa, según su ingreso. Solicite antes de su procedimiento para confirmar su costo exacto.',
   'compare.dollarFor': 'Si le niegan su solicitud, Dollar For puede ayudarle a apelar gratis — {link}',
   'compare.hcaCharity': 'El descuento de HCA depende de su ingreso, su procedimiento y la ubicación, así que es difícil predecirlo con exactitud. Llame a HCA al 888-246-3812 para confirmar para qué calificaría antes de programar.',
+  'compare.hcaPolicyLink': 'Ver la política de asistencia financiera de HCA →',
+  'hca.noApp': 'HCA no ofrece una solicitud de atención caritativa en línea. Llame al 888-246-3812 para solicitar una y hablar con un asesor financiero.',
 
   'other.title': 'Este procedimiento aún no está en BeforeCost',
   'other.body': 'BeforeCost actualmente muestra precios verificados para 11 procedimientos comunes en 8 hospitales de Houston. Estamos ampliando nuestra lista a medida que recopilamos más datos. Si necesita precios para otro procedimiento ahora mismo, puede consultar directamente el estimador oficial de precios de cada hospital. Visite la página de Recursos para enlaces directos a las herramientas de estimación de los 8 hospitales, solicitudes de atención caritativa y números de teléfono de asesoría financiera.',
@@ -270,6 +272,7 @@ BC.STRINGS.es = {
   'resources.callLabel': 'Llamar',
   'resources.estimatorLink': 'Estimador de buena fe ↗',
   'resources.charityApplyLink': 'Solicitud de atención caritativa ↗',
+  'resources.hcaPolicyLink': 'Ver la política de asistencia financiera de HCA ↗',
   'resources.goldApplyLink': 'Solicitar la Gold Card ↗',
   'resources.charityThresh': 'Atención gratuita en o por debajo del {free}% del FPL · Con descuento hasta el {disc}% del FPL',
   'resources.goldThresh': 'Gold Card para residentes del Condado de Harris en o por debajo del 150% del FPL · sin seguro requerido',
@@ -453,6 +456,8 @@ BC.STRINGS.vi = {
   'compare.charityDiscPctAlmost': 'Giảm gần 100% nhờ chăm sóc từ thiện, dựa trên thu nhập của bạn. Nộp đơn trước khi làm thủ thuật để xác nhận chi phí chính xác.',
   'compare.dollarFor': 'Nếu đơn của bạn bị từ chối, Dollar For có thể giúp bạn kháng nghị miễn phí — {link}',
   'compare.hcaCharity': 'Mức giảm giá của HCA tùy thuộc vào thu nhập, thủ thuật và địa điểm của bạn, nên khó dự đoán chính xác. Gọi HCA theo số 888-246-3812 để xác nhận bạn đủ điều kiện được giảm bao nhiêu trước khi đặt lịch.',
+  'compare.hcaPolicyLink': 'Xem chính sách hỗ trợ tài chính của HCA →',
+  'hca.noApp': 'HCA không cung cấp đơn xin chăm sóc từ thiện trực tuyến. Gọi 888-246-3812 để yêu cầu một đơn và nói chuyện với nhân viên tư vấn tài chính.',
 
   'other.title': 'Thủ thuật này chưa có trên BeforeCost',
   'other.body': 'BeforeCost hiện hiển thị giá đã xác minh cho 11 thủ thuật phổ biến tại 8 bệnh viện ở Houston. Chúng tôi đang mở rộng danh sách khi thu thập thêm dữ liệu. Nếu bạn cần giá cho một thủ thuật khác ngay bây giờ, bạn có thể xem trực tiếp công cụ ước tính thiện chí chính thức của từng bệnh viện. Truy cập trang Tài nguyên để có liên kết trực tiếp đến công cụ ước tính của cả 8 bệnh viện, đơn xin chăm sóc từ thiện và số điện thoại tư vấn tài chính.',
@@ -591,6 +596,7 @@ BC.STRINGS.vi = {
   'resources.callLabel': 'Gọi',
   'resources.estimatorLink': 'Công cụ ước tính thiện chí ↗',
   'resources.charityApplyLink': 'Đơn xin chăm sóc từ thiện ↗',
+  'resources.hcaPolicyLink': 'Xem chính sách hỗ trợ tài chính của HCA ↗',
   'resources.goldApplyLink': 'Nộp đơn Gold Card ↗',
   'resources.charityThresh': 'Chăm sóc miễn phí ở mức hoặc dưới {free}% FPL · Giảm giá lên đến {disc}% FPL',
   'resources.goldThresh': 'Gold Card cho cư dân Quận Harris ở mức hoặc dưới 150% FPL · không cần bảo hiểm',

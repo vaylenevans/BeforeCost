@@ -653,6 +653,7 @@ select {
 .res-hosp-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
 .res-hosp-links a { font-size: 0.86rem; font-weight: 600; }
 .res-dollar { font-size: 0.78rem; color: var(--muted); margin-top: 10px; }
+.res-hca-note { font-size: 0.8rem; color: var(--muted); margin-top: 10px; line-height: 1.45; }
 
 /* ---------- About (rebuilt) ---------- */
 .about-body p { font-size: 1rem; color: #292524; line-height: 1.6; margin-bottom: 1rem; }

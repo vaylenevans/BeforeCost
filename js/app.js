@@ -370,7 +370,9 @@
       '<p class="flat-note">' + esc(t('compare.charityFree', { pct: policy.free })) + ' ' +
       esc(t('compare.charityDisc', { pct: policy.disc })) + '</p>' +
       '<a class="charity-link" href="' + esc(BC.CHARITY_LINKS[hosp.system]) + '" target="_blank" rel="noopener noreferrer" ' +
-      'data-out="charity" data-name="' + esc(hosp.name) + '">' + esc(t('compare.charityLink', { hospital: hosp.name })) + '</a>' +
+      'data-out="charity" data-name="' + esc(hosp.name) + '">' +
+      esc(hosp.system === 'hca' ? t('compare.hcaPolicyLink') : t('compare.charityLink', { hospital: hosp.name })) + '</a>' +
+      (hosp.system === 'hca' ? '<p class="hca-note">' + esc(t('hca.noApp')) + '</p>' : '') +
       '<p class="dollar-for">' + t('compare.dollarFor', { link: '<a href="https://www.dollarfor.org" target="_blank" rel="noopener noreferrer" data-out="plain">dollarfor.org</a>' }) + '</p>' +
       (hosp.system === 'hca' ? '<p class="hca-note">' + esc(t('compare.hcaCharity')) + '</p>' : '') +
       '<p class="verified-date">' + esc(t('compare.lastVerified', { date: hosp.lastVerified })) + '</p>' +
@@ -1077,8 +1079,9 @@
         (pol ? '<div class="res-hosp-thresh">' + esc(t('resources.charityThresh', { free: pol.free, disc: pol.disc })) + '</div>' : '') +
         '<div class="res-hosp-links">' +
           (est ? '<a href="' + esc(est) + '" target="_blank" rel="noopener noreferrer" data-out="plain">' + esc(t('resources.estimatorLink')) + '</a>' : '') +
-          (char ? '<a href="' + esc(char) + '" target="_blank" rel="noopener noreferrer" data-out="charity" data-name="' + esc(h.name) + '">' + esc(t('resources.charityApplyLink')) + '</a>' : '') +
+          (char ? '<a href="' + esc(char) + '" target="_blank" rel="noopener noreferrer" data-out="charity" data-name="' + esc(h.name) + '">' + esc(h.system === 'hca' ? t('resources.hcaPolicyLink') : t('resources.charityApplyLink')) + '</a>' : '') +
         '</div>' +
+        (h.system === 'hca' ? '<p class="res-hca-note">' + esc(t('hca.noApp')) + '</p>' : '') +
         '<p class="res-dollar">' + t('resources.dollarNote', { link: dfLink }) + '</p>';
       return accCard(h.name, body);
     }
