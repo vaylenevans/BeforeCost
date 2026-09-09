@@ -206,9 +206,9 @@ BC.STRINGS.es = {
 
   'fee.hospitalNote': 'Las tarifas del médico y de anestesia se facturan por separado y se sumarán al total. Llame a {hospital} al {phone} para un estimado completo.',
   'fee.physicianNote': 'Los cargos del hospital se facturan por separado y se sumarán al total. Llame a {hospital} al {phone} para un estimado completo.',
-  'fee.infoIntro': 'Los precios de hospitales pueden incluir cosas diferentes.',
   'fee.infoHospital': 'Tarifa del hospital = el cargo del hospital por la habitación, el equipo y la enfermería.',
-  'fee.infoPhysician': 'Tarifa del médico = el cargo del doctor por el procedimiento. A veces se combinan; a veces se facturan por separado.',
+  'fee.infoPhysician': 'Tarifa del médico = el cargo del doctor por el procedimiento.',
+  'fee.infoBundled': 'A veces se combinan; a veces se facturan por separado.',
   'fee.infoEstimate': 'Todos los precios son estimados — confirme con el hospital antes de programar.',
   'fee.infoLabel': '¿Qué cubre esta tarifa?',
 
@@ -530,9 +530,9 @@ BC.STRINGS.vi = {
 
   'fee.hospitalNote': 'Phí bác sĩ và gây mê được tính riêng và sẽ cộng thêm vào tổng. Gọi {hospital} theo số {phone} để có ước tính đầy đủ.',
   'fee.physicianNote': 'Các khoản phí bệnh viện được tính riêng và sẽ cộng thêm vào tổng. Gọi {hospital} theo số {phone} để có ước tính đầy đủ.',
-  'fee.infoIntro': 'Giá bệnh viện có thể bao gồm những thứ khác nhau.',
   'fee.infoHospital': 'Phí bệnh viện = khoản bệnh viện tính cho phòng, thiết bị và điều dưỡng.',
-  'fee.infoPhysician': 'Phí bác sĩ = khoản bác sĩ tính cho thủ thuật. Đôi khi chúng được gộp chung; đôi khi được tính riêng.',
+  'fee.infoPhysician': 'Phí bác sĩ = khoản bác sĩ tính cho thủ thuật.',
+  'fee.infoBundled': 'Đôi khi chúng được gộp chung; đôi khi được tính riêng.',
   'fee.infoEstimate': 'Tất cả giá đều là ước tính — hãy xác nhận với bệnh viện trước khi đặt lịch.',
   'fee.infoLabel': 'Khoản phí này bao gồm gì?',
 

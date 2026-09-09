@@ -217,9 +217,9 @@ BC.STRINGS = {
     /* Fee-type detail */
     'fee.hospitalNote': 'Physician and anesthesia fees are billed separately and will add to the total. Call {hospital} at {phone} for a complete estimate.',
     'fee.physicianNote': 'Hospital charges are billed separately and will add to the total. Call {hospital} at {phone} for a complete estimate.',
-    'fee.infoIntro': 'Hospital prices can include different things.',
     'fee.infoHospital': "Hospital fee = the hospital's charge for the room, equipment, and nursing.",
-    'fee.infoPhysician': "Physician fee = the doctor's charge for the procedure. Sometimes these are bundled together; sometimes they're billed separately.",
+    'fee.infoPhysician': "Physician fee = the doctor's charge for the procedure.",
+    'fee.infoBundled': "Sometimes these are bundled together; sometimes they're billed separately.",
     'fee.infoEstimate': 'All prices are estimates — confirm with the hospital before scheduling.',
     'fee.infoLabel': 'What does this fee cover?',
 

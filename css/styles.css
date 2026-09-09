@@ -570,7 +570,7 @@ select {
 }
 .fee-pop-note { display: block; margin-bottom: 12px; color: var(--mint); }
 .fee-pop-line { display: block; }
-.fee-pop-estimate { margin-top: 10px; }
+.fee-pop-line + .fee-pop-line { margin-top: 12px; }
 .fee-info:hover .fee-pop, .fee-info:focus .fee-pop, .fee-info:focus-within .fee-pop { opacity: 1; visibility: visible; }
 
 /* ---------- MRI imaging-center card ---------- */

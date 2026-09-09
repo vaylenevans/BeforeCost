@@ -195,9 +195,9 @@
   // extra note (e.g. the separate-bill warning) is appended inside the popover.
   function feeInfo(extra) {
     var general =
-      '<span class="fee-pop-line">' + esc(t('fee.infoIntro')) + '</span>' +
       '<span class="fee-pop-line">' + esc(t('fee.infoHospital')) + '</span>' +
       '<span class="fee-pop-line">' + esc(t('fee.infoPhysician')) + '</span>' +
+      '<span class="fee-pop-line">' + esc(t('fee.infoBundled')) + '</span>' +
       '<span class="fee-pop-line fee-pop-estimate">' + esc(t('fee.infoEstimate')) + '</span>';
     var body = extra ? ('<span class="fee-pop-note">' + esc(extra) + '</span>' + general) : general;
     return '<span class="fee-info" tabindex="0" role="button" aria-label="' + esc(t('fee.infoLabel')) + '">ⓘ' +
