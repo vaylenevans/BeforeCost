@@ -68,7 +68,7 @@ BC.ESTIMATORS = {
 BC.CHARITY_LINKS = {
   mh:        'https://memorialhermann.org/patients-visitors/patient-services/financial-care/financial-assistance-program',
   methodist: 'https://www.houstonmethodist.org/pay-your-bill/new-policies/',
-  hca:       'https://www.hcahoustonhealthcare.com/patient-resources/patient-financial-resources',
+  hca:       'https://www.hcahoustonhealthcare.com/patient-resources/patient-financial-resources/financial-assistance',
   stlukes:   'https://www.commonspirit.org/patient-resources/stlukes-health-financial-assistance#accordion-050aba6629-item-a3af1e62dc'
 };
 
