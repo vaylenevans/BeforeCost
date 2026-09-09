@@ -185,6 +185,9 @@ a:hover { text-decoration: underline; }
 .btn:disabled, .btn[disabled] { background: var(--border); color: var(--disabled); border-color: var(--border); cursor: not-allowed; }
 .btn:disabled:hover, .btn[disabled]:hover { background: var(--border); color: var(--disabled); }
 .btn-row { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+/* Homepage hero CTA ("Start — it's free"): content-width, left-aligned even on
+   mobile — matching the desktop look — instead of stretching full-width. */
+#start-scroll { width: auto; align-self: flex-start; }
 
 @media (min-width: 640px) {
   .btn { width: auto; }
