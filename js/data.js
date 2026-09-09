@@ -60,14 +60,14 @@ BC.INSURANCE_ESTIMATOR_PROCS = ['appendectomy', 'hysterectomy', 'cholecystectomy
 /* Hospital systems -> official estimator URL (used for Rule 6 links). */
 BC.ESTIMATORS = {
   mh:        'https://memorialhermann.org/patients-visitors/patient-services/financial-care/financial-resources/pricing-estimate',
-  methodist: 'https://www.houstonmethodist.org/for-patients/patient-resources/billing-insurance/pricing-transparency/',
+  methodist: 'https://mychart.houstonmethodist.org/MyChart/GuestEstimates/AcceptDisclaimer?svcArea=WP-24rSoO2Uiqo7WIOgyxXcne0A-3D-3D-24ZNnWeZUqNqNxWrEA3SM-2BT5f-2B-2FdlsUqOiRtlJbvRBeqo-3D&isMultiSA=false',
   hca:       'https://www.hcahoustonhealthcare.com/patient-resources/patient-financial-resources/pricing-estimates-and-information',
   stlukes:   'https://www.stlukeshealth.org/cost-estimator'
 };
 
 BC.CHARITY_LINKS = {
-  mh:        'https://memorialhermann.org/patients-visitors/patient-services/financial-care',
-  methodist: 'https://www.houstonmethodist.org/pay-your-bill/financial-assistance/',
+  mh:        'https://memorialhermann.org/patients-visitors/patient-services/financial-care/financial-assistance-program',
+  methodist: 'https://www.houstonmethodist.org/pay-your-bill/new-policies/',
   hca:       'https://www.hcahoustonhealthcare.com/patient-resources/patient-financial-resources',
   stlukes:   'https://www.commonspirit.org/patient-resources/stlukes-health-financial-assistance#accordion-050aba6629-item-a3af1e62dc'
 };
