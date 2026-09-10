@@ -239,6 +239,7 @@ BC.STRINGS = {
     'how.p3cta': 'Find Resources →',
     'faq.shortLink': 'FAQ',
     'how.closing': 'No login needed. Your information is not saved or stored. Everything you need to walk in prepared.',
+    'how.clinicEyebrow': 'For navigators',
     'how.clinicTitle': 'If you help others navigate care',
     'how.clinicSub': 'How to use BeforeCost with Houston residents',
     'how.c1': 'Open BeforeCost on your computer or phone before or during an appointment.',

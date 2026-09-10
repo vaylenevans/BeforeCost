@@ -584,7 +584,10 @@
     // Hospitals stay defaulted to all (handled separately below).
     var procAll = s.procMode === 'all';
     return '<div class="scr-wrap">' +
-      '<div class="scr-vbar"><div class="scr-vbar-fill" id="scr-vfill"></div></div>' +
+      '<div class="scr-progress" aria-hidden="true"><div class="scr-progress-inner">' +
+        '<div class="scr-pct" id="scr-pct">0%</div>' +
+        '<div class="scr-track"><div class="scr-vbar-fill" id="scr-vfill"></div></div>' +
+      '</div></div>' +
       '<form id="screener-form" class="card">' +
         '<div id="scr-teaser"></div>' +
         field(t('screener.q.age'), '<input type="number" name="age" min="0" inputmode="numeric" aria-required="true" value="' + esc(s.age || '') + '">', null, true) +
@@ -769,6 +772,7 @@
     radioF.forEach(function (n) { if (form.querySelector('input[name="' + n + '"]:checked')) done++; });
     var pct = Math.round(done / (textF.length + radioF.length) * 100);
     var fill = el('scr-vfill'); if (fill) fill.style.height = pct + '%';
+    var pctEl = el('scr-pct'); if (pctEl) pctEl.textContent = pct + '%';
   }
 
   // Live teaser: once income + family size are entered, show a running count
@@ -1212,7 +1216,10 @@
         '<div class="how-body"><h3>' + esc(t(s[1])) + '</h3>' + bodyHtml + cta + '</div></div>';
     }).join('');
     var clinicSteps = ['how.c1', 'how.c2', 'how.c3', 'how.c5', 'how.c6']
-      .map(function (k) { return '<li>' + esc(t(k)) + '</li>'; }).join('');
+      .map(function (k, i) {
+        return '<div class="clinic-item"><span class="clinic-n">' + (i + 1) + '</span>' +
+          '<p>' + esc(t(k)) + '</p></div>';
+      }).join('');
     return '<div class="page narrow">' +
       '<p class="eyebrow">' + esc(t('how.eyebrow')) + '</p>' +
       '<h1>' + esc(t('how.title')) + '</h1>' +
@@ -1220,9 +1227,12 @@
       '<h2 class="how-section">' + esc(t('how.forPatients')) + '</h2>' +
       '<div class="how-steps">' + patientSteps + '</div>' +
       '<p class="how-closing">' + esc(t('how.closing')) + '</p>' +
-      '<h2 class="how-section section-gap clinic-hl">' + esc(t('how.clinicTitle')) + '</h2>' +
-      '<p class="lede">' + esc(t('how.clinicSub')) + '</p>' +
-      '<ol class="how-clinic">' + clinicSteps + '</ol>' +
+      '<div class="clinic-card section-gap">' +
+        '<p class="clinic-eyebrow">' + esc(t('how.clinicEyebrow')) + '</p>' +
+        '<h2 class="clinic-title">' + esc(t('how.clinicTitle')) + '</h2>' +
+        '<p class="clinic-sub">' + esc(t('how.clinicSub')) + '</p>' +
+        clinicSteps +
+      '</div>' +
       '<div class="disclaimer">' + esc(t('how.clinicNote')) + '</div>' +
       '<div class="btn-row"><a class="btn btn-primary" href="#/" data-scroll-screener="1">' + esc(t('btn.start')) + '</a></div>' +
     '</div>';
