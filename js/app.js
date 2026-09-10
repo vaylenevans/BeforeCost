@@ -632,7 +632,7 @@
               return '<label class="chk-opt' + (on ? ' checked' : '') + '"><input type="checkbox" name="procedure" value="' + esc(it.value) + '"' + (on ? ' checked' : '') + '>' +
                 '<span class="chk-box"></span><span>' + esc(it.label) + '</span></label>';
             }).join('') +
-          '</div>', t('screener.q.procedures.help')) +
+          '</div>', t('screener.q.procedures.help'), true) +
         '<div class="opt-section">' +
           '<button type="button" class="opt-toggle" id="opt-narrow-btn" aria-expanded="' + (narrowOpen ? 'true' : 'false') + '">' +
             '<span>' + esc(t('screener.narrowToggle')) + '</span><span class="opt-toggle-ic" aria-hidden="true"></span></button>' +
@@ -667,7 +667,7 @@
   var REQ_RADIO = ['county', 'sex', 'pregnant', 'kids', 'lifeEvent', 'disability'];
   function validateScreener(form) {
     var firstBad = null;
-    function mark(fieldEl, bad) {
+    function mark(fieldEl, bad, msgText) {
       if (!fieldEl) return;
       fieldEl.classList.toggle('field-invalid', bad);
       var msg = fieldEl.querySelector('.field-err');
@@ -675,7 +675,7 @@
         msg = document.createElement('div');
         msg.className = 'field-err';
         msg.setAttribute('role', 'alert');
-        msg.textContent = t('screener.errRequired');
+        msg.textContent = msgText || t('screener.errRequired');
         fieldEl.appendChild(msg);
       } else if (!bad && msg) { msg.remove(); }
       if (bad && !firstBad) firstBad = fieldEl;
@@ -688,6 +688,11 @@
       var any = form.querySelector('input[name="' + n + '"]');
       mark(any ? any.closest('.field') : null, !form.querySelector('input[name="' + n + '"]:checked'));
     });
+    // At least one procedure — "All procedures" or one specific box.
+    var procAll = form.querySelector('#proc-all');
+    var procField = procAll ? procAll.closest('.field') : null;
+    var procOk = (procAll && procAll.checked) || !!form.querySelector('input[name="procedure"]:checked');
+    mark(procField, !procOk, t('screener.errProcedure'));
     if (firstBad) {
       firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
       var f = firstBad.querySelector('input, select');
@@ -706,9 +711,15 @@
       if (!target || !target.closest) return;
       var f = target.closest('.field');
       if (!f || !f.classList.contains('field-invalid')) return;
-      var ok = target.type === 'radio'
-        ? !!form.querySelector('input[name="' + target.name + '"]:checked')
-        : String(target.value).trim() !== '';
+      var ok;
+      if (target.name === 'procedure' || target.id === 'proc-all') {
+        var pa = form.querySelector('#proc-all');
+        ok = (pa && pa.checked) || !!form.querySelector('input[name="procedure"]:checked');
+      } else if (target.type === 'radio') {
+        ok = !!form.querySelector('input[name="' + target.name + '"]:checked');
+      } else {
+        ok = String(target.value).trim() !== '';
+      }
       if (ok) { f.classList.remove('field-invalid'); var m = f.querySelector('.field-err'); if (m) m.remove(); }
     }
     // radio visual state + kids toggle
@@ -770,7 +781,10 @@
     var done = 0;
     textF.forEach(function (n) { var i = form.querySelector('[name="' + n + '"]'); if (i && String(i.value).trim() !== '') done++; });
     radioF.forEach(function (n) { if (form.querySelector('input[name="' + n + '"]:checked')) done++; });
-    var pct = Math.round(done / (textF.length + radioF.length) * 100);
+    // Procedures count as one required item (All, or at least one specific).
+    var procAll = form.querySelector('#proc-all');
+    if ((procAll && procAll.checked) || form.querySelector('input[name="procedure"]:checked')) done++;
+    var pct = Math.round(done / (textF.length + radioF.length + 1) * 100);
     var fill = el('scr-vfill'); if (fill) fill.style.height = pct + '%';
     var pctEl = el('scr-pct'); if (pctEl) pctEl.textContent = pct + '%';
   }
