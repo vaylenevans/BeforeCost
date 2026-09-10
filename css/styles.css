@@ -111,20 +111,33 @@ a:hover { text-decoration: underline; }
 
 .nav-right { display: flex; align-items: center; gap: 8px; }
 
-.lang-toggle { display: flex; background: rgba(255,255,255,0.10); border-radius: 999px; padding: 3px; }
-.lang-toggle button {
-  border: 0; background: transparent; color: rgba(255,255,255,0.72);
-  font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500;
-  padding: 5px 10px; border-radius: 999px; cursor: pointer; white-space: nowrap;
+/* Language dropdown */
+.lang-select { position: relative; }
+.lang-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 32px; padding: 0 12px; border: 1.5px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.14); color: var(--white); cursor: pointer;
+  border-radius: 999px; font-family: 'Inter', sans-serif; font-weight: 600;
+  font-size: 0.85rem; white-space: nowrap;
 }
-.lang-toggle button.active { background: var(--white); color: var(--forest); font-weight: 600; }
-/* Compact language codes on small screens; full labels from 560px up. */
-.lang-toggle .lang-full { display: none; }
-.lang-toggle .lang-short { display: inline; }
-@media (min-width: 560px) {
-  .lang-toggle .lang-full { display: inline; }
-  .lang-toggle .lang-short { display: none; }
+.lang-btn:hover { background: rgba(255,255,255,0.24); }
+.lang-select.open .lang-btn { background: var(--white); color: var(--forest); border-color: var(--white); }
+.lang-caret { font-size: 0.65rem; line-height: 1; transition: transform 0.15s ease; }
+.lang-select.open .lang-caret { transform: rotate(180deg); }
+.lang-menu {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
+  display: none; min-width: 150px; padding: 6px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: 0 10px 30px rgba(20,83,45,0.18);
 }
+.lang-select.open .lang-menu { display: block; }
+.lang-menu button {
+  display: block; width: 100%; text-align: left; border: 0; background: transparent;
+  color: var(--body); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500;
+  padding: 9px 12px; border-radius: 8px; cursor: pointer; white-space: nowrap;
+}
+.lang-menu button:hover { background: var(--mint-pale); color: var(--forest); }
+.lang-menu button.active { background: var(--mint-pale); color: var(--forest); font-weight: 600; }
 
 .nav-menu-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 7px;

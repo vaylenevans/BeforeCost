@@ -21,6 +21,7 @@ BC.STRINGS = {
     'nav.how': 'How it works',
     'nav.about': 'About',
     'nav.menu': 'Menu',
+    'nav.language': 'Language',
 
     'btn.start': "Start — it's free",
     'btn.seePrices': 'See prices without a screening',

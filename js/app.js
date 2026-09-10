@@ -1261,19 +1261,28 @@
     var navLinks = links.map(function (l) {
       return '<a href="' + l[0] + '" data-nav="' + l[0] + '"' + (l[2] ? ' data-scroll-screener="1"' : '') + '>' + esc(t(l[1])) + '</a>';
     }).join('');
-    var langBtns = BC.LANGS.map(function (l) {
-      return '<button data-lang="' + l.code + '" aria-label="' + esc(l.label) + '"' + (l.code === lang ? ' class="active"' : '') + '>' +
-        '<span class="lang-full">' + esc(l.label) + '</span>' +
-        '<span class="lang-short">' + esc(l.short || l.label) + '</span>' +
-        '</button>';
+    var curLang = BC.LANGS.filter(function (l) { return l.code === lang; })[0] || BC.LANGS[0];
+    var langOpts = BC.LANGS.map(function (l) {
+      return '<button type="button" role="option" data-lang="' + l.code + '"' +
+        (l.code === lang ? ' aria-selected="true" class="active"' : ' aria-selected="false"') + '>' +
+        esc(l.label) + '</button>';
     }).join('');
+    var langDropdown =
+      '<div class="lang-select" id="lang-select">' +
+        '<button type="button" class="lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" ' +
+          'aria-label="' + esc(t('nav.language')) + '">' +
+          '<span class="lang-cur">' + esc(curLang.short || curLang.label) + '</span>' +
+          '<span class="lang-caret" aria-hidden="true">▾</span>' +
+        '</button>' +
+        '<div class="lang-menu" id="lang-menu" role="listbox" aria-label="' + esc(t('nav.language')) + '">' + langOpts + '</div>' +
+      '</div>';
 
     el('nav').innerHTML =
       '<div class="nav-inner">' +
         '<a class="brand" href="#/"><span>Before</span><span class="c">Cost</span></a>' +
         '<div class="nav-links">' + navLinks + '</div>' +
         '<div class="nav-right">' +
-          '<div class="lang-toggle">' + langBtns + '</div>' +
+          langDropdown +
           '<button class="nav-menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="' + esc(t('nav.menu')) + '">' +
             '<span class="nav-menu-icon" aria-hidden="true">☰</span>' +
             '<span class="nav-menu-label">' + esc(t('nav.menu')) + '</span>' +
@@ -1285,6 +1294,24 @@
     el('nav').querySelectorAll('[data-lang]').forEach(function (b) {
       b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
     });
+    var lb = el('lang-btn'), lsel = el('lang-select');
+    if (lb) lb.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = !lsel.classList.contains('open');
+      lsel.classList.toggle('open', open);
+      lb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Close the language dropdown on outside click or Escape (bound once).
+    if (!BC._langDocBound) {
+      BC._langDocBound = true;
+      document.addEventListener('click', function (e) {
+        var sel = el('lang-select');
+        if (sel && !sel.contains(e.target)) sel.classList.remove('open');
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { var sel = el('lang-select'); if (sel) sel.classList.remove('open'); }
+      });
+    }
     var mb = el('menu-btn'), mm = el('mobile-menu');
     function setMenu(open) {
       mm.classList.toggle('open', open);

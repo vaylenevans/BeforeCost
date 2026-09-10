@@ -12,6 +12,7 @@ BC.STRINGS.es = {
   'nav.how': 'Cómo funciona',
   'nav.about': 'Acerca de',
   'nav.menu': 'Menú',
+  'nav.language': 'Idioma',
 
   'btn.start': 'Comenzar — es gratis',
   'btn.seePrices': 'Ver precios sin evaluación',
@@ -336,6 +337,7 @@ BC.STRINGS.vi = {
   'nav.how': 'Cách hoạt động',
   'nav.about': 'Giới thiệu',
   'nav.menu': 'Menu',
+  'nav.language': 'Ngôn ngữ',
 
   'btn.start': 'Bắt đầu — miễn phí',
   'btn.seePrices': 'Xem giá không cần đánh giá',
