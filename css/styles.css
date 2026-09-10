@@ -218,6 +218,10 @@ a:hover { text-decoration: underline; }
 .field > label { display: block; font-weight: 600; font-size: 0.95rem; margin-bottom: 7px; color: var(--body); }
 .field .help { font-size: 0.82rem; color: var(--muted); margin-top: 6px; display: flex; gap: 5px; }
 .field .help::before { content: 'ⓘ'; color: var(--emerald); }
+.field .req { color: #DC2626; font-weight: 700; }
+.field-err { font-size: 0.82rem; color: #DC2626; font-weight: 500; margin-top: 6px; }
+.field-invalid > label { color: #DC2626; }
+.field-invalid input[type="text"], .field-invalid input[type="number"], .field-invalid select { border-color: #DC2626; }
 
 input[type="text"], input[type="number"], select {
   width: 100%; min-height: 48px; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--body);

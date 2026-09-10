@@ -587,39 +587,39 @@
       '<div class="scr-vbar"><div class="scr-vbar-fill" id="scr-vfill"></div></div>' +
       '<form id="screener-form" class="card">' +
         '<div id="scr-teaser"></div>' +
-        field(t('screener.q.age'), '<input type="number" name="age" min="0" inputmode="numeric" value="' + esc(s.age || '') + '">') +
+        field(t('screener.q.age'), '<input type="number" name="age" min="0" inputmode="numeric" aria-required="true" value="' + esc(s.age || '') + '">', null, true) +
         field(t('screener.q.income'),
           '<div class="income-row">' +
-            '<input type="number" name="monthlyIncome" min="0" inputmode="numeric" value="' + esc(s.monthlyIncome || '') + '">' +
+            '<input type="number" name="monthlyIncome" min="0" inputmode="numeric" aria-required="true" value="' + esc(s.monthlyIncome || '') + '">' +
             '<select name="incomeFreq" class="income-freq" aria-label="' + esc(t('screener.q.income')) + '">' +
               '<option value="yearly"' + ((s.incomeFreq || 'yearly') === 'yearly' ? ' selected' : '') + '>' + esc(t('screener.freq.yearly')) + '</option>' +
               '<option value="monthly"' + (s.incomeFreq === 'monthly' ? ' selected' : '') + '>' + esc(t('screener.freq.monthly')) + '</option>' +
             '</select>' +
-          '</div>', t('screener.q.income.help')) +
-        field(t('screener.q.size'), '<input type="number" name="familySize" min="1" inputmode="numeric" value="' + esc(s.familySize || '') + '">', t('screener.q.size.help')) +
+          '</div>', t('screener.q.income.help'), true) +
+        field(t('screener.q.size'), '<input type="number" name="familySize" min="1" inputmode="numeric" aria-required="true" value="' + esc(s.familySize || '') + '">', t('screener.q.size.help'), true) +
         field(t('screener.q.county'),
           '<div class="opt-list">' + radio('county', 'harris', t('screener.opt.harris'), s.county) +
-          radio('county', 'other', t('screener.opt.other'), s.county) + '</div>') +
+          radio('county', 'other', t('screener.opt.other'), s.county) + '</div>', null, true) +
         field(t('screener.q.sex'),
           '<div class="opt-inline">' + radio('sex', 'female', t('screener.opt.female'), s.sex) +
           radio('sex', 'male', t('screener.opt.male'), s.sex) +
-          radio('sex', 'other', t('screener.opt.otherSex'), s.sex) + '</div>') +
+          radio('sex', 'other', t('screener.opt.otherSex'), s.sex) + '</div>', null, true) +
         field(t('screener.q.pregnant'),
           '<div class="opt-inline">' + radio('pregnant', 'yes', t('opt.yes'), s.pregnant) +
-          radio('pregnant', 'no', t('opt.no'), s.pregnant) + '</div>') +
+          radio('pregnant', 'no', t('opt.no'), s.pregnant) + '</div>', null, true) +
         field(t('screener.q.kids'),
           '<div class="opt-inline">' + radio('kids', 'yes', t('opt.yes'), s.kids) +
-          radio('kids', 'no', t('opt.no'), s.kids) + '</div>') +
+          radio('kids', 'no', t('opt.no'), s.kids) + '</div>', null, true) +
         '<div id="kids-detail" class="' + (s.kids === 'yes' ? '' : 'hidden') + '">' +
           field(t('screener.q.kidsCount'), '<input type="number" name="kidsCount" min="0" inputmode="numeric" value="' + esc(s.kidsCount || '') + '">') +
           field(t('screener.q.kidsAges'), '<input type="text" name="kidsAges" value="' + esc(s.kidsAges || '') + '">') +
         '</div>' +
         field(t('screener.q.life'),
           '<div class="opt-inline">' + radio('lifeEvent', 'yes', t('opt.yes'), s.lifeEvent) +
-          radio('lifeEvent', 'no', t('opt.no'), s.lifeEvent) + '</div>', t('screener.q.life.help')) +
+          radio('lifeEvent', 'no', t('opt.no'), s.lifeEvent) + '</div>', t('screener.q.life.help'), true) +
         field(t('screener.q.disability'),
           '<div class="opt-inline">' + radio('disability', 'yes', t('opt.yes'), s.disability) +
-          radio('disability', 'no', t('opt.no'), s.disability) + '</div>') +
+          radio('disability', 'no', t('opt.no'), s.disability) + '</div>', null, true) +
         field(t('screener.q.procedures'),
           '<label class="chk-opt chk-all"><input type="checkbox" id="proc-all"' + (procAll ? ' checked' : '') + '>' +
             '<span class="chk-box"></span><span>' + esc(t('screener.opt.allProcedures')) + '</span></label>' +
@@ -653,15 +653,61 @@
       screenerFormMarkup() +
     '</div>';
   }
-  function field(label, control, help) {
-    return '<div class="field"><label>' + esc(label) + '</label>' + control +
+  function field(label, control, help, req) {
+    return '<div class="field"><label>' + esc(label) +
+      (req ? ' <span class="req" aria-hidden="true">*</span>' : '') + '</label>' + control +
       (help ? '<div class="help">' + esc(help) + '</div>' : '') + '</div>';
+  }
+
+  // Required core eligibility questions — must be answered before results.
+  var REQ_TEXT = ['age', 'monthlyIncome', 'familySize'];
+  var REQ_RADIO = ['county', 'sex', 'pregnant', 'kids', 'lifeEvent', 'disability'];
+  function validateScreener(form) {
+    var firstBad = null;
+    function mark(fieldEl, bad) {
+      if (!fieldEl) return;
+      fieldEl.classList.toggle('field-invalid', bad);
+      var msg = fieldEl.querySelector('.field-err');
+      if (bad && !msg) {
+        msg = document.createElement('div');
+        msg.className = 'field-err';
+        msg.setAttribute('role', 'alert');
+        msg.textContent = t('screener.errRequired');
+        fieldEl.appendChild(msg);
+      } else if (!bad && msg) { msg.remove(); }
+      if (bad && !firstBad) firstBad = fieldEl;
+    }
+    REQ_TEXT.forEach(function (n) {
+      var i = form.querySelector('[name="' + n + '"]');
+      mark(i ? i.closest('.field') : null, !i || String(i.value).trim() === '');
+    });
+    REQ_RADIO.forEach(function (n) {
+      var any = form.querySelector('input[name="' + n + '"]');
+      mark(any ? any.closest('.field') : null, !form.querySelector('input[name="' + n + '"]:checked'));
+    });
+    if (firstBad) {
+      firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var f = firstBad.querySelector('input, select');
+      if (f) { try { f.focus({ preventScroll: true }); } catch (e) {} }
+      return false;
+    }
+    return true;
   }
 
   function wireScreener() {
     var form = el('screener-form');
     if (!form) return;
     function live() { screenerProgress(form); screenerTeaser(form); }
+    // Clear a field's error once it's been answered.
+    function clearError(target) {
+      if (!target || !target.closest) return;
+      var f = target.closest('.field');
+      if (!f || !f.classList.contains('field-invalid')) return;
+      var ok = target.type === 'radio'
+        ? !!form.querySelector('input[name="' + target.name + '"]:checked')
+        : String(target.value).trim() !== '';
+      if (ok) { f.classList.remove('field-invalid'); var m = f.querySelector('.field-err'); if (m) m.remove(); }
+    }
     // radio visual state + kids toggle
     form.addEventListener('change', function (e) {
       if (e.target.type === 'radio') {
@@ -676,8 +722,9 @@
         if (e.target.id === 'proc-all') el('procedure-checks').classList.toggle('hidden', e.target.checked);
       }
       live();
+      clearError(e.target);
     });
-    form.addEventListener('input', live);
+    form.addEventListener('input', function (e) { live(); clearError(e.target); });
     var narrowBtn = el('opt-narrow-btn');
     if (narrowBtn) narrowBtn.addEventListener('click', function () {
       var open = el('opt-narrow').classList.toggle('hidden') === false;
@@ -686,6 +733,7 @@
     live(); // reflect any pre-filled values
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (!validateScreener(form)) return;
       var fd = new FormData(form);
       var data = {
         age: fd.get('age'), monthlyIncome: fd.get('monthlyIncome'), incomeFreq: fd.get('incomeFreq') || 'yearly', familySize: fd.get('familySize'),

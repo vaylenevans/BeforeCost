@@ -51,6 +51,7 @@ BC.STRINGS = {
     'screener.intro': 'Answer a few quick questions to see the programs you may qualify for and what each hospital would charge you.',
     'screener.progress': '{pct}% complete',
     'screener.teaser': 'So far, you may qualify for {n} program(s) — finish to see them all.',
+    'screener.errRequired': 'This question is required.',
     'screener.narrowToggle': 'Optional: choose specific hospitals',
     'screener.q.age': 'Your age',
     'screener.q.income': 'Household income (before taxes)',
