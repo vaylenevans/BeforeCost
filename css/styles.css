@@ -127,11 +127,16 @@ a:hover { text-decoration: underline; }
 }
 
 .nav-menu-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 40px; height: 40px; border: 0; background: transparent;
-  color: var(--white); cursor: pointer; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  height: 40px; padding: 0 15px; border: 1.5px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.14); color: var(--white); cursor: pointer;
+  border-radius: 999px; font-family: 'Inter', sans-serif; font-weight: 600;
+  font-size: 0.92rem; white-space: nowrap;
 }
-.nav-menu-btn:hover { background: rgba(255,255,255,0.10); }
+.nav-menu-btn:hover { background: rgba(255,255,255,0.24); }
+.nav-menu-btn.open { background: var(--white); color: var(--forest); border-color: var(--white); }
+.nav-menu-icon { font-size: 1.05rem; line-height: 1; }
+.nav-menu-label { line-height: 1; }
 
 .nav-links { display: none; }
 .nav-links a {

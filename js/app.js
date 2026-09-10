@@ -1274,7 +1274,10 @@
         '<div class="nav-links">' + navLinks + '</div>' +
         '<div class="nav-right">' +
           '<div class="lang-toggle">' + langBtns + '</div>' +
-          '<button class="nav-menu-btn" id="menu-btn" aria-label="' + esc(t('nav.menu')) + '">☰</button>' +
+          '<button class="nav-menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="' + esc(t('nav.menu')) + '">' +
+            '<span class="nav-menu-icon" aria-hidden="true">☰</span>' +
+            '<span class="nav-menu-label">' + esc(t('nav.menu')) + '</span>' +
+          '</button>' +
         '</div>' +
       '</div>' +
       '<div class="mobile-menu" id="mobile-menu">' + navLinks + '</div>';
@@ -1283,8 +1286,17 @@
       b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
     });
     var mb = el('menu-btn'), mm = el('mobile-menu');
-    if (mb) mb.addEventListener('click', function () { mm.classList.toggle('open'); });
-    mm.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { mm.classList.remove('open'); }); });
+    function setMenu(open) {
+      mm.classList.toggle('open', open);
+      if (mb) {
+        mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+        mb.classList.toggle('open', open);
+        var icon = mb.querySelector('.nav-menu-icon');
+        if (icon) icon.textContent = open ? '✕' : '☰';
+      }
+    }
+    if (mb) mb.addEventListener('click', function () { setMenu(!mm.classList.contains('open')); });
+    mm.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
 
 
     el('footer').innerHTML =
